@@ -1,3 +1,5 @@
+import { Time } from './time.model';
+
 export class Ball {
     _x: number; //x-coordinate
     _y: number;//y-coordinate
@@ -6,6 +8,7 @@ export class Ball {
     _angle: number;
     _vx: number; // x component of the velocity
     _vy: number; //y component of the velocity
+    _time: Time;
 
     constructor(x: number,
         y: number,
@@ -14,6 +17,7 @@ export class Ball {
         angle: number,
         vx: number,
         vy: number,
+        time: Time
     ) {
         this._x = x;
         this._y = y;
@@ -22,5 +26,6 @@ export class Ball {
         this._angle = angle;
         this._vx = vx;
         this._vy = vy;
+        this._time = time;
     }
 }
