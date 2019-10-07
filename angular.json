@@ -117,8 +117,16 @@
               "devServerTarget": "bouncing-balls:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://vmayav.github.io/bouncing-balls/",
+            "name": "bouncing-balls"
+          }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "bouncing-balls"
 }
