@@ -5,7 +5,6 @@ export class Ball {
     _y: number;//y-coordinate
     _color: string;
     _radius: number;
-    _angle: number;
     _vx: number; // x component of the velocity
     _vy: number; //y component of the velocity
     _time: Time;
@@ -14,7 +13,6 @@ export class Ball {
         y: number,
         color: string,
         radius: number,
-        angle: number,
         vx: number,
         vy: number,
         time: Time
@@ -23,7 +21,6 @@ export class Ball {
         this._y = y;
         this._color = color;
         this._radius = radius;
-        this._angle = angle;
         this._vx = vx;
         this._vy = vy;
         this._time = time;

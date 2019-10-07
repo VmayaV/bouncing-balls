@@ -89,7 +89,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -122,8 +122,9 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://vmayav.github.io/bouncing-balls/",
-            "name": "bouncing-balls"
+            "baseHref": "/bouncing-balls/",
+            "name": "bouncing-balls",
+            "repo":"https://github.com/VmayaV/bouncing-balls.git"
           }
         }
       }

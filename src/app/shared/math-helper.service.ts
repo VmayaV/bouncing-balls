@@ -4,11 +4,11 @@ import { Time } from '../models';
 @Injectable()
 export class MathHelperService {
 
-    getRandomArbitrary(min, max) {
+    getRandomArbitrary(min: number, max: number) {
         return Math.random() * (max - min) + min;
     }
 
-    getDt(time) {
+    getDt(time: Time) {
         let t1 = new Date().getTime() / 1000;
         time.dt = t1 - time.t0;
         time.t0 = t1;

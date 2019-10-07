@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BallPlaygroundComponent } from './ball-playground.component';
+import { MathHelperService } from 'src/app/shared';
+import { MathHelperServiceMock } from 'src/app/mocks/math-helper.service.mock';
 
 describe('BallPlaygroundComponent', () => {
   let component: BallPlaygroundComponent;
@@ -8,9 +9,11 @@ describe('BallPlaygroundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BallPlaygroundComponent ]
+      declarations: [BallPlaygroundComponent],
+      providers: [{ provide: MathHelperService, useClass: MathHelperServiceMock }]
+
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

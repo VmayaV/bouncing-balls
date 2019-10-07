@@ -8,4 +8,9 @@ export class AppPage {
   getTitleText() {
     return element(by.css('app-root .content span')).getText() as Promise<string>;
   }
+  waitForCanvasToLoad(element) {
+    return function () {
+      return browser.executeScript("!!arguments[0].getImageData();", element.getWebElement());
+    }
+  }
 }

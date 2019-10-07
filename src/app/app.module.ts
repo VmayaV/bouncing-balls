@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BallPlaygroundModule } from './components/ball-playground';
 import { LoaderModule } from './components/loader';
 import { MathHelperService, DrawingService, SharedModule } from './shared';
-import { HeaderModule } from './header';
+import { HeaderModule } from './components/header';
 
 @NgModule({
   declarations: [

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.isVisibleLoader = false;
-      this.loaderText = "Loading boucing ball component...";
+      this.loaderText = "Loading bouncing ball component...";
     }, 1000);
   }
 }

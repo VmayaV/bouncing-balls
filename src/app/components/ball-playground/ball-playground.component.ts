@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Ball, Physics, Time } from 'src/app/models';
 import { MathHelperService } from '../../shared'
-import { UserSetup } from 'src/app/models/user-setup.model';
+import { Config } from './../../configs/config'
 
 @Component({
   selector: 'ball-playground',
@@ -13,7 +13,6 @@ export class BallPlaygroundComponent implements OnInit {
   ctx: CanvasRenderingContext2D;
   canvasWidth: number;
   canvasHeight: number;
-  userSetup: UserSetup;
   random_number_of_balls: number;
   list_of_balls: Ball[] = [];
 
@@ -23,35 +22,33 @@ export class BallPlaygroundComponent implements OnInit {
 
   ngOnInit() {
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
-    this.userSetup = new UserSetup(-100, -100, 1000, 1000, 1, 30);
-    this.random_number_of_balls = this.mathHelperService.getRandomArbitrary(1, 30);
+    this.random_number_of_balls = this.mathHelperService.getRandomArbitrary(Config.minNumberOfBalls, Config.maxNumberOfBalls);
   }
 
   ngAfterViewInit() {
     this.setCanvasDimensions(this.ctx);
   }
 
-  onMouseClicked(event) {
+  onMouseClicked(event: MouseEvent) {
     const rect = this.ctx.canvas.getBoundingClientRect();
     for (let i = 0; i < this.random_number_of_balls; i++) {
       let ball = this.initialSetup(event.clientX - rect.left, event.clientY - rect.top);
       this.list_of_balls.push(ball);
     }
-    this.bounce(event.clientX - rect.left, event.clientY - rect.top);
+    this.bounce();
   }
 
   private initialSetup(x: number, y: number) {
-    let current_time = new Date().getTime() / 1000;
+    let current_time = new Date().getTime() / Config.second;
     let time = new Time(current_time, current_time);
-    let vx = this.mathHelperService.getRandomArbitrary(this.userSetup.minVx, this.userSetup.maxVx);
-    let vy = this.mathHelperService.getRandomArbitrary(this.userSetup.minVy, this.userSetup.maxVy);
+    let vx = this.mathHelperService.getRandomArbitrary(Config.minVx, Config.maxVx);
+    let vy = this.mathHelperService.getRandomArbitrary(Config.minVy, Config.maxVy);
     let color = this.mathHelperService.getRandomColor();
-    let radius = this.mathHelperService.getRandomArbitrary(this.userSetup.minRadius, this.userSetup.maxRadius);
-    return new Ball(x, y, color, radius, 0, vx, vy, time);
+    let radius = this.mathHelperService.getRandomArbitrary(Config.minRadius, Config.maxRadius);
+    return new Ball(x, y, color, radius, vx, vy, time);
   }
 
-  bounce(x, y) {
-    debugger
+  bounce() {
     setInterval(() => {
       this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
       this.list_of_balls.forEach(ball => {
@@ -61,7 +58,7 @@ export class BallPlaygroundComponent implements OnInit {
     })
   }
 
-  bounceBall(ball) {
+  bounceBall(ball: Ball) {
     let dt = this.mathHelperService.getDt(ball._time).dt;
     if (ball._x > this.canvasWidth - ball._radius) {
       ball._vx = -ball._vx * Physics.friction //friction
@@ -86,17 +83,17 @@ export class BallPlaygroundComponent implements OnInit {
     return ball;
   }
 
-  setCanvasDimensions(ctx) {
+  setCanvasDimensions(ctx: CanvasRenderingContext2D) {
     ctx.canvas.width = window.innerWidth - 16;
     ctx.canvas.height = window.innerHeight - 118;
     this.canvasWidth = this.ctx.canvas.width;
     this.canvasHeight = this.ctx.canvas.height;
   }
 
-  drawBall(ctx, ball: Ball) {
+  drawBall(ctx: CanvasRenderingContext2D, ball: Ball) {
     ctx.fillStyle = ball._color;
     ctx.beginPath();
-    ctx.arc(ball._x, ball._y, ball._radius, 0, 2 * Math.PI);
+    ctx.arc(ball._x, ball._y, ball._radius, 0, Config.twoPi);
     ctx.fill();
     ctx.closePath();
   }
