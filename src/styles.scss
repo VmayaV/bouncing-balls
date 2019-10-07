@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/variables";
+@import "./styles/normalize";
+@import "./styles/typography";
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+  text-align: center;
+}

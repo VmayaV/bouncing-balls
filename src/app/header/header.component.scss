@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+.header {
+  background: $primary-color;
+  height: 10rem;
+  padding: 2rem;
+  .header__title {
+    color: #ffffff;
+    font-size: 4rem;
+  }
+}
