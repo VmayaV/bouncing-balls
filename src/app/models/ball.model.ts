@@ -1,13 +1,13 @@
 import { Time } from './time.model';
 
 export class Ball {
-    _x: number; //x-coordinate
-    _y: number;//y-coordinate
-    _color: string;
-    _radius: number;
-    _vx: number; // x component of the velocity
-    _vy: number; //y component of the velocity
-    _time: Time;
+    x: number; //x-coordinate
+    y: number;//y-coordinate
+    color: string;
+    radius: number;
+    vx: number; // x component of the velocity
+    vy: number; //y component of the velocity
+    time: Time;
 
     constructor(x: number,
         y: number,
@@ -17,12 +17,12 @@ export class Ball {
         vy: number,
         time: Time
     ) {
-        this._x = x;
-        this._y = y;
-        this._color = color;
-        this._radius = radius;
-        this._vx = vx;
-        this._vy = vy;
-        this._time = time;
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.radius = radius;
+        this.vx = vx;
+        this.vy = vy;
+        this.time = time;
     }
 }

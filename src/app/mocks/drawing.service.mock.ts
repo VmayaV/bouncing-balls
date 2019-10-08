@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Ball } from '../models';
 import { Config } from './../configs/config';
+import { DrawingService } from '../shared';
 
 @Injectable()
-export class DrawingService {
-
-    constructor() { }
+export class DrawingServiceMock extends DrawingService {
 
     drawBall(ctx: CanvasRenderingContext2D, ball: Ball) {
         ctx.fillStyle = ball.color;
@@ -13,6 +12,7 @@ export class DrawingService {
         ctx.arc(ball.x, ball.y, ball.radius, 0, Config.twoPi);
         ctx.fill();
         ctx.closePath();
+        return ctx;
     }
     setCanvasDimensions(ctx: CanvasRenderingContext2D) {
         ctx.canvas.width = window.innerWidth - 30;

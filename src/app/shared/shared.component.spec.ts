@@ -1,6 +1,7 @@
 import { MathHelperService } from './math-helper.service';
 import { Time } from '../models';
 import { TestBed, async } from '@angular/core/testing';
+import { ball1Mock } from '../mocks/ball.mock';
 
 
 describe("Shared Service", function () {
@@ -17,7 +18,16 @@ describe("Shared Service", function () {
     it('should be created', () => {
         expect(service).toBeTruthy();
     });
-
+    it('should be created', () => {
+        expect(service.getRandomArbitrary(1, 8)).toBeGreaterThanOrEqual(1);
+        expect(service.getRandomArbitrary(1, 8)).toBeLessThanOrEqual(8);
+    });
+    it('checks if ball has invalid values for x and y coordinates', () => {
+        let ball = service.moveBall(ball1Mock, 500, 500, 2.4);
+        expect(ball.x).toBeGreaterThanOrEqual(0);
+        expect(ball.y).toBeGreaterThanOrEqual(0);
+        expect(ball.time.dt).toBeGreaterThanOrEqual(0);
+    })
     it("mocks the Date objects and sets them to a given time, and then returns the 'dt' when t1===t0", () => {
         jasmine.clock().install();
         jasmine.clock().mockDate(t0);
