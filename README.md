@@ -1,5 +1,11 @@
 # Bouncing balls
 
+
+The app is simple canvas playground, from where balls are fired. The numbers of the balls is random generated, as same as the width,
+angle, speed from the coordinates where the user clicks on the screen.
+
+After the balls are firedm they are hitting the ground and on every hit they are lossing energy, so their speed is reducing for some percentage. Also there is some friction that influence the speed of the ball when they touch the ground.
+
 This project was generated with angular version 9.0.0-next.8.
 
 ## Development server
@@ -21,11 +27,3 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 ## Deploying app on github pages
 
 Run `ng deploy` to deploy app on https://vmayav.github.io/bouncing-balls/ from gh-pages branch.
-
-
-## The app
-
-The app is simple canvas playground, from where balls are fired. The numbers of the balls is random generated, as same as the width,
-angle, speed from the coordinates where the user clicks on the screen.
-
-After the balls are firedm they are hitting the ground and on every hit they are lossing energy, so their speed is reducing for some percentage. Also there is some friction that influence the speed of the ball when they touch the ground.
