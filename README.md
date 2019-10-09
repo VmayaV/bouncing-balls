@@ -2,7 +2,7 @@
 
 
 The app is simple canvas playground, from where balls are fired. The numbers of the balls is random generated, as well as the width,
-angle, speed from the coordinates where the user clicks on the screen.
+angle, speed and radius, from the coordinates where the user clicks on the screen.
 
 After the balls are firedm they are hitting the ground and on every hit they are lossing energy, so their speed is reducing for some percentage. Also there is some friction that influence the speed of the ball when they touch the ground.
 
